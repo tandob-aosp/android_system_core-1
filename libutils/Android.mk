@@ -74,6 +74,8 @@ LOCAL_CFLAGS += -DALIGN_DOUBLE
 endif
 LOCAL_CFLAGS += -Werror -fvisibility=protected
 
+LOCAL_SRC_FILES += MediatekHacks.cpp
+
 LOCAL_STATIC_LIBRARIES := \
 	libcutils \
 	libc

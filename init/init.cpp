@@ -346,7 +346,7 @@ static void export_kernel_boot_props() {
         { "ro.boot.mode",       "ro.bootmode",   "unknown", },
         { "ro.boot.baseband",   "ro.baseband",   "unknown", },
         { "ro.boot.bootloader", "ro.bootloader", "unknown", },
-        { "ro.boot.hardware",   "ro.hardware",   "unknown", },
+        { "ro.boot.hardware",   "ro.hardware",   "mt6592", },
 #ifndef IGNORE_RO_BOOT_REVISION
         { "ro.boot.revision",   "ro.revision",   "0", },
 #endif
@@ -430,10 +430,11 @@ static selinux_enforcing_status selinux_status_from_cmdline() {
 
 static bool selinux_is_enforcing(void)
 {
-    if (ALLOW_PERMISSIVE_SELINUX) {
+    return false;
+    /*if (ALLOW_PERMISSIVE_SELINUX) {
         return selinux_status_from_cmdline() == SELINUX_ENFORCING;
     }
-    return true;
+    return true;*/
 }
 
 int selinux_reload_policy(void)
@@ -525,7 +526,7 @@ static int charging_mode_booting(void) {
         return 0;
 
     close(f);
-    return ('1' == cmb);
+    return ('8' == cmb);
 #endif
 }
 
